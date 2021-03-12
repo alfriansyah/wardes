@@ -20,15 +20,15 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form">
+              <form role="form" method='post'>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="nama">NIK</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" placeholder="NIK">
+                    <input type="number" name='nik' class="form-control" id="exampleInputEmail1" placeholder="NIK">
                   </div>
                   <div class="form-group">
                     <label for="kepalakeluarga">Nama Kepala Keluarga</label>
-                    <input type="text" class="form-control" id="kepalakeluarga" placeholder="">
+                    <input type="text" name='nama_kk' class="form-control" id="kepalakeluarga" placeholder="">
                   </div>
                   <!-- desa -->
                   <div class="form-grou">
@@ -38,7 +38,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Desa</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select name='desa' class="custom-select" id="inputGroupSelect01">
                         <option selected>Bandar Khalipah</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -51,7 +51,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Dusun</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select name='dusun' class="custom-select" id="inputGroupSelect01">
                         <option selected>Dusun IX</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -64,7 +64,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">jalan</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select name='jalan' class="custom-select" id="inputGroupSelect01">
                         <option selected>Jl. Puskesmas</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -77,7 +77,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Gang</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select name='gang' class="custom-select" id="inputGroupSelect01">
                         <option selected>Teratai 13</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -85,19 +85,12 @@
                     </select>
                     </div>
                     <!-- end gang -->
-                  <div class="form-group">
-                    <label for="kepalakeluarga"></label>
-                    <input type="text" class="form-control" id="kepalakeluarga" placeholder="">
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                  </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <button type='reset' class="btn btn-danger">Reset</button>
                 </div>
               </form>
             </div>
