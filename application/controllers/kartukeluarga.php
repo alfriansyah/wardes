@@ -22,6 +22,7 @@
                     'wrapper'   =>  'wrapper',
                     'desa'      => 'Bandar Khalipah',
                     'pos'       => 20371,
+                    'desa'      => $this->k_keluarga->getdesa(),
                     'dusun'     => $this->k_keluarga->getdusun(),
                     'jalan'     => $this->k_keluarga->getjalan(),
                     'gang'      => $this->k_keluarga->getgang(),

@@ -6,6 +6,7 @@
         // get desa
         public function getdesa()
         {
+            $this->db->order_by('nama_desa','ASC');
             return $this->db->get('desa')->result_array();
         }
         // get dusun

@@ -16,6 +16,11 @@
         } 
         
         // get jalan
+        public function GetDusun()
+        {
+            return $this->db->get('dusun')->result_array();
+        }
+        // get jalan
         public function getjalan()
         {
             return $this->db->get('jalan')->result_array();

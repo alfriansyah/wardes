@@ -13,6 +13,7 @@
             $data['header']     = 'hold-transition sidebar-mini layout-fixed';
             $data['wrapper']    = 'wrapper';
             $data['jalan']      = $this->t_gang->getjalan();
+            $data['dusun']      = $this->t_gang->GetDusun();
             $this->load->view('header',$data);
             $this->load->view('sidebar');
             $this->load->view('gang');
