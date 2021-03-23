@@ -7,7 +7,8 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Pilih Dusun</label>
                         </div>
-                            <select name='dusun' id='dusun' class="custom-select" >                    
+                            <select name='dusun' id='dusun' class="custom-select" >  
+                                <option>Pilih Dusun</option>                  
                                 <?php  foreach($dusun as $dusun): ?>
                                     <option value='<?= $dusun['id_dusun'] ?>' ><?= $dusun['nama_dusun'] ?> </option>
                                 <?php endforeach ?>

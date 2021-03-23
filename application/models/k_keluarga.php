@@ -14,7 +14,8 @@
         {
             $this->db->where('id_desa',$val);
             $this->db->order_by('nama_dusun','asc');
-            $query  = $this->db->get('dusun')->result(); // result() , return as objek
+            $query  = $this->db->get('dusun')->result(); // result() , return as objek            
+            echo '<option> Pilih Dusun </option>';
             foreach($query as $row){
                 echo '<option value="'.$row->id_dusun.'">'. $row->nama_dusun .'</option>';
             }
@@ -25,7 +26,8 @@
             // pilih jalan yg id_dusunnya $val
             $this->db->where('id_dusun',$val);
             $this->db->order_by('nama_jalan','asc');
-            $query  = $this->db->get('jalan')->result();
+            $query  = $this->db->get('jalan')->result();            
+            echo '<option> Pilih Jalan </option>';
             foreach($query as $row){
                 echo '<option value="'.$row->id_jalan.'">'.$row->nama_jalan.'</option>';
             }
@@ -35,8 +37,9 @@
         {
             $this->db->where('id_jalan',$val);
             $this->db->order_by('nama_gang','asc');
-            $query = $this->db->get('gang')->result();
-            foreach($query as $ros){
+            $query = $this->db->get('gang')->result();            
+            echo '<option> Pilih Gang </option>';
+            foreach($query as $row){
                 echo '<option value="'.$row->id_gang.'">'.$row->nama_gang.'</option>';
             }
         }
