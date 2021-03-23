@@ -4,29 +4,34 @@
     class k_keluarga extends CI_Model{
         
         // get desa
-        public function getdesa()
+        public function GetDesa()
         {
             $this->db->order_by('nama_desa','ASC');
             return $this->db->get('desa')->result_array();
         }
         // get dusun
-        public function getdusun()
+        public function GetDusun($val='')
         {
-            return $this->db->get('dusun')->result_array();
+            $this->db->where('id_desa',$val);
+            $this->db->order_by('nama_dusun','asc');
+            $query  = $this->db->get('dusun')->result(); // result() , return as objek
+            foreach($query as $row){
+                echo '<option value="'.$row->id_dusun.'">'. $row->nama_dusun .'</option>';
+            }
         }
         // get jalan
-        public function getjalan()
+        public function GetJalan()
         {
             return $this->db->get('jalan')->result_array();
         }
         // get gang
-        public function getgang()
+        public function GetGang()
         {
             return $this->db->get('gang')->result_array();
         }
         
         // tambah data gang
-        public function tambahgang()
+        public function TambahGang()
         {           
             // siapkan data 
             $gang = [

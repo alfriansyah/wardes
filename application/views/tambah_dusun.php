@@ -7,10 +7,8 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Desa</label>
                     </div>
-                    <select name='desa' class="custom-select" id="inputGroupSelect01">                    
-                        <?php  foreach($desa as $desa): ?>
-                            <option value='<?= $desa['id_desa'] ?>' ><?= $desa['nama_desa'] ?> </option>
-                        <?php endforeach ?>
+                    <select name='desa' class="custom-select" id="inputGroupSelect01"> 
+                            <option value='3' >Bandar Khalipah</option>
                     </select>                    
                     </div>
                     <!-- end gang -->
@@ -28,10 +26,6 @@
     </div>
 </div>
 
-<?php // foreach($desa as $desa) {
-    var_dump($desa);
-
-//}?>
 
 
 <?php ?>

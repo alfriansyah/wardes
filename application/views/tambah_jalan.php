@@ -5,7 +5,7 @@
             <div class="card-body">
             <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Jalan</label>
+                        <label class="input-group-text" for="inputGroupSelect01">Pilih Dusun</label>
                     </div>
                     <select name='dusun' class="custom-select" id="inputGroupSelect01">                    
                         <?php  foreach($jalan as $dusun): ?>

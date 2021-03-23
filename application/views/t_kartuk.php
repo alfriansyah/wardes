@@ -1,7 +1,7 @@
 <div class="container ">
     <div class="row justify-content-center">
         <div class="col-md-12 col-lg-6">
-            <form role='form' method='post'>
+            <form role='form' method='post' action=''>
                 <div class="form-group">
                     <label for="nik">Nomor KK</label>
                     <input type="number" class="form-control" name='nik' id="nik" placeholder="masukkan nomor KK">
@@ -19,35 +19,25 @@
                 <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Desa</label>
-                            <select class="form-control" name='jalan' id="dusun">
+                            <select class="form-control" name='desa' id="desa">
                                 <option>Pilih</option>
-                                <?php foreach ($desa as $desa): ?>
-                                <option value="<?= $desa['id_desa']?>"><?= $desa['nama_desa']?></option>
-                                <?php endforeach ?>
+                                <option value='3'>Bandar Khalipah</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Dusun</label>
-                            <select class="form-control" name='jalan' id="dusun">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control" name='dusun' id="dusun">
+                                <option >Pilih Dusun</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Jalan</label>
-                            <select class="form-control" name='dusun' id="jalan">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control" name='jalan' id="jalan">
+                                <option >Pilih jalan</option>
                             </select>
                         </div>
                     </div>
@@ -55,19 +45,12 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Gang</label>
                             <select class="form-control" name='gang' id="gang">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option>Pilih Gang</option>                                
                             </select>
                         </div>
                     </div>
-                    <!--Google map-->
-<div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
-  <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-    style="border:0" allowfullscreen></iframe>
-</div>
+                    <!--Google map -->
+
                     <div class="col-auto my-1">
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="reset" class="btn btn-danger">Reset</button>
@@ -77,3 +60,29 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+
+        // dusun
+        $('#desa').change(function(){
+            // tangkap value dari desa
+            var id_desa    = $(this).val();
+            // jalankan ajax
+            $.ajax({
+                // sumber data
+                url    : "<?php base_url()?>kartukeluarga/Dusun/",
+                method : 'POST',
+                data   : {desa:id_desa},// dikirim ke controoler sebagain input->post('desa')
+                success:function(data){
+                    console.log(id_desa);
+                    console.log(data);
+                    $('#dusun').html(data);
+                }
+            })
+        });
+
+        // jalan
+
+        // gang
+    })
+</script>

@@ -3,7 +3,7 @@
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <strong>Copyright &copy;<?php echo date("Y"); ?>
-            <a href="<?= base_url()?>"> Desa Bandar Khalipah </a>.</strong>
+            <a href="<?= base_url()?>."> Desa Bandar Khalipah </a>.</strong>
             <div class="float-right d-none d-sm-inline-block">
             <b>Versi</b> 1.0
             </div>
@@ -17,7 +17,7 @@
     </div>
     <!-- ./wrapper -->
 <!-- jQuery -->
-<script src="<?= base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="<?= base_url() ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

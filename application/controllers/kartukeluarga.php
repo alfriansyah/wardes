@@ -22,10 +22,10 @@
                     'wrapper'   =>  'wrapper',
                     'desa'      => 'Bandar Khalipah',
                     'pos'       => 20371,
-                    'desa'      => $this->k_keluarga->getdesa(),
-                    'dusun'     => $this->k_keluarga->getdusun(),
-                    'jalan'     => $this->k_keluarga->getjalan(),
-                    'gang'      => $this->k_keluarga->getgang(),
+                    'desa'      => $this->k_keluarga->GetDesa(),
+                    'dusun'     => $this->k_keluarga->GetDusun(),
+                    'jalan'     => $this->k_keluarga->GetJalan(),
+                    'gang'      => $this->k_keluarga->GetGang(),
                 ];
             $this->load->view('header',$data);
             $this->load->view('sidebar');
@@ -39,7 +39,15 @@
                 redirect('home');
             }
         }
-        
+            // 
+            public function Dusun()
+            {
+                $id_desa = $this->input->post('desa');//dari  data{desa:} pada ajax
+                // kirim id_desa dan return hasil nya
+                echo $this->k_keluarga->GetDusun($id_desa);
+            }
     }
+        
+    
 
 ?>
