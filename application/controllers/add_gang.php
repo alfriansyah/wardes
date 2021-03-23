@@ -9,7 +9,7 @@
             // jika tambah inser gagal balik ke halamn ini
             $this->form_validation->set_rules('jalan','Jalan','required');
             $this->form_validation->set_rules('gang','Gang','required');
-            if($this->form_validation->run() == FALSE){
+        if($this->form_validation->run() == FALSE){
             $data['header']     = 'hold-transition sidebar-mini layout-fixed';
             $data['wrapper']    = 'wrapper';
             $data['jalan']      = $this->t_gang->getjalan();
@@ -25,6 +25,12 @@
                 // alihkan ke base home
                 redirect('home');
             }
+        }
+
+        public function gang()
+        {
+            $id_dusun   = $this->input->post('dusun');
+            echo   $this->t_gang->GetJalan($id_dusun);
         }
         
     }

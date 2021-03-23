@@ -7,7 +7,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Pilih Dusun</label>
                         </div>
-                            <select name='dusun' class="custom-select" id="inputGroupSelect01">                    
+                            <select name='dusun' id='dusun' class="custom-select" >                    
                                 <?php  foreach($dusun as $dusun): ?>
                                     <option value='<?= $dusun['id_dusun'] ?>' ><?= $dusun['nama_dusun'] ?> </option>
                                 <?php endforeach ?>
@@ -20,10 +20,8 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Pilih Jalan</label>
                         </div>
-                            <select name='jalan' class="custom-select" id="inputGroupSelect01">                    
-                                <?php  foreach($jalan as $jalan): ?>
-                                    <option value='<?= $jalan['id_jalan'] ?>' ><?= $jalan['nama_jalan'] ?> </option>
-                                <?php endforeach ?>
+                            <select name='jalan' id='jalan' class="custom-select" id="inputGroupSelect01">
+                                <option >Pilih Jalan</option>
                             </select>                    
                         </div>
                     <!-- end gang -->
@@ -31,7 +29,7 @@
                 
                 <div class="form-group">
                     <label for="kepalakeluarga">Tambah Gang</label>
-                    <input type="text" name='gang' class="form-control" id="kepalakeluarga" placeholder="">
+                    <input type="text" name='gang' class="form-control" id="gang" placeholder="">
                 </div>
             </div> <!-- card-body -->
             <div class="card-footer">
@@ -42,10 +40,25 @@
     </div>
 </div>
 
-<?php // foreach($desa as $desa) {
-    var_dump($desa);
+<script>
+    $(document).ready(function(){
 
-//}?>
+        //jalan 
+        $('#dusun').change(function(){
+            // get value #dusun
+            var    id_dusun = $(this).val();
+            // jalankan ajax
+            $.ajax({
+                // sumber data
+                url     : "<?php base_url()?>add_gang/gang",
+                method  : 'POST',
+                data    : {dusun:id_dusun},
+                success : function(data){
+                    console.log(data);
+                    $('#jalan').html(data);
+                }
+            })
+        })
 
-
-<?php ?>
+    })
+</script>

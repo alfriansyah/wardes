@@ -20,14 +20,25 @@
             }
         }
         // get jalan
-        public function GetJalan()
+        public function GetJalan($val='')
         {
-            return $this->db->get('jalan')->result_array();
+            // pilih jalan yg id_dusunnya $val
+            $this->db->where('id_dusun',$val);
+            $this->db->order_by('nama_jalan','asc');
+            $query  = $this->db->get('jalan')->result();
+            foreach($query as $row){
+                echo '<option value="'.$row->id_jalan.'">'.$row->nama_jalan.'</option>';
+            }
         }
         // get gang
-        public function GetGang()
+        public function GetGang($val='')
         {
-            return $this->db->get('gang')->result_array();
+            $this->db->where('id_jalan',$val);
+            $this->db->order_by('nama_gang','asc');
+            $query = $this->db->get('gang')->result();
+            foreach($query as $ros){
+                echo '<option value="'.$row->id_gang.'">'.$row->nama_gang.'</option>';
+            }
         }
         
         // tambah data gang

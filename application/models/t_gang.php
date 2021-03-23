@@ -21,9 +21,14 @@
             return $this->db->get('dusun')->result_array();
         }
         // get jalan
-        public function getjalan()
+        public function GetJalan($val='')
         {
-            return $this->db->get('jalan')->result_array();
+           $this->db->where('id_dusun',$val);
+           $this->db->order_by('nama_jalan',);
+           $query   = $this->db->get('jalan')->result();
+           foreach($query as $row){
+               echo '<option value="'.$row->id_jalan.'">'.$row->nama_jalan.'</option>';
+           }
         }
     }
 

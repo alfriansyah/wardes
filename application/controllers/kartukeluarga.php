@@ -39,13 +39,28 @@
                 redirect('home');
             }
         }
-            // 
-            public function Dusun()
-            {
-                $id_desa = $this->input->post('desa');//dari  data{desa:} pada ajax
-                // kirim id_desa dan return hasil nya
-                echo $this->k_keluarga->GetDusun($id_desa);
-            }
+        // dusun
+        public function Dusun()
+        {
+            $id_desa = $this->input->post('desa');//dari  data{desa:} pada ajax
+            // kirim id_desa dan return hasil nya
+            echo $this->k_keluarga->GetDusun($id_desa);
+        }
+
+        // jalan
+        public function Jalan()
+        {
+            $id_desa = $this->input->post('dusun');//dari  data{desa:} pada ajax
+            // kirim id_desa dan return hasil nya
+            echo $this->k_keluarga->GetJalan($id_desa);
+        }
+
+        // gang
+        public function Gang()
+        {
+            $id_jalan = $this->input->post('jalan');
+            echo $this->k_keluarga->GetGang($id_jalan);
+        }
     }
         
     

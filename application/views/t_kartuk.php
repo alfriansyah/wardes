@@ -10,10 +10,6 @@
                     <label for="nama">Nama Kepala Keluarga</label>
                     <input type="text" name='nama' class="form-control" id="nama" placeholder="masukkan nama kepala keluarga">
                 </div>
-                <div class="form-group">
-                    <label for="nik">Nomor KK</label>
-                    <input type="number" class="form-control" name='nik' id="nik" placeholder="masukkan nomor KK">
-                </div>
                 <label for="">Alamat</label>
                 <div class="form-row">
                 <div class="col-md-6 mb-3">
@@ -82,7 +78,36 @@
         });
 
         // jalan
-
+        $('#dusun').change(function(){
+            // tangkap value dusun
+            var id_dusun    = $(this).val();
+            // jalankan ajax
+            $.ajax({
+                // sumber data
+                url     : "<?php base_url()?>kartukeluarga/jalan",
+                method  :'POST',
+                data    : {dusun:id_dusun},
+                success : function(data){
+                    console.log(id_dusun);
+                    $('#jalan').html(data);
+                }
+            })
+        })
         // gang
+        $('#jalan').change(function(){
+            // tankap value jalan
+            var id_jalan    = $(this).val();
+            // jalankan ajax
+            $.ajax({
+                //sumber data
+                url     : "<?php base_url()?>kartukeluarga/gang",
+                method  : 'POST',
+                data    : {jalan:id_jalan},
+                success : function(data){
+                    console.log(id_jalan);
+                    $('#gang').html(data);
+                }
+            })
+        })
     })
 </script>
