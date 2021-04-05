@@ -1,15 +1,16 @@
 <?php
 
     
-    class k_keluarga extends CI_Model{
+    class ModelKartuKeluarga extends CI_Model{
         
-        // get desa
+        // get desa langsung dari database
         public function GetDesa()
         {
             $this->db->order_by('nama_desa','ASC');
             return $this->db->get('desa')->result_array();
         }
         // get dusun
+        // tampilkan dusun yg id desanya $val
         public function GetDusun($val='')
         {
             $this->db->where('id_desa',$val);

@@ -1,7 +1,7 @@
 <?php
 
     
-    class t_gang extends CI_Model{
+    class ModelGang extends CI_Model{
         
         // tambah data gang
         public function tambahgang()

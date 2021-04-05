@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?= base_url()?>assets/plugins/bootstrap/css/bootsrap337.css">
     <link rel="stylesheet" href="<?= base_url()?>assets/plugins/fontawesome-free/css/all.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/slider/css/BootSideMenu.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/leaflet/leaflet.css">
 
     <style type="text/css">
         .user {
@@ -19,44 +20,30 @@
     </style>
 </head>
 <body>
+<br><br><br><br><br><br>
 
 
-<div class="container">
-
-    <!--Example content-->
+<div class="container ">
     <div class="row">
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading"><span class="fa fa-jsfiddle"></span> How to</div>
-                <div class="panel-body">
-                    <p class="lead">The menu is on the left.</p>
-                    <pre>$(document).ready(function () {
-                            $('#test').BootSideMenu({
-                                side: "left"
-                            });
-                        });
-                    </pre>
-                    <p class="lead"> By default it remembers its last status and push the body while it slide. To
-                        disable these features use the options:</p>
-                    <pre>remember:false</pre>
-                    <pre>pushBody:false</pre>
-
-                    <!-- <p>Watch this changes in the <a href="2-simple-right.html">next example</a>.</p> -->
-                </div>
-            </div>
+        <div class="col-md-6">
+            data
         </div>
+        <div class="col-md-6" id="mapid" style="height: 500px;width:500px;"></div>
     </div>
 </div>
+
+    
+
 
 <!--Test -->
 <div id="test" ></div>
 <!--/Test -->
 
-<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src="<?= base_url()?>assets/plugins/bootstrap/js/w3.js"></script>
 <script src="<?= base_url()?>assets/plugins/jquery/jquery.js"></script>
 <script src="<?= base_url()?>assets/plugins/bootstrap/js/bootstrap.js"></script>
-
 <script src="<?= base_url()?>assets/slider/js/BootSideMenu.js"></script>
+<script src="<?= base_url()?>assets/leaflet/leaflet.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -68,6 +55,23 @@
             side: "left"
         });
     }
+
+    var map = L.map('mapid').setView([51.505, -0.09], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([51.5, -0.09]).addTo(map)
+        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+        .openPopup();
+    
+    setInterval(function(){
+    map.setZoom(0);
+    setTimeout(function(){
+        map.setZoom(1);
+    }, 2000);
+}, 400000);
 </script>
 </body>
 </html>

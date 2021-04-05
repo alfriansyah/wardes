@@ -5,7 +5,7 @@
         // tampilan 
         public function index($tingkat= null)
         {   
-            $this->load->model('k_keluarga');
+            // $this->load->model('k_keluarga');
             // jika tambah inser gagal balik ke halamn ini
             $this->form_validation->set_rules('nik','Nik','required');
             $this->form_validation->set_rules('nama','Nama','required');
@@ -22,14 +22,14 @@
                     'wrapper'   =>  'wrapper',
                     'desa'      => 'Bandar Khalipah',
                     'pos'       => 20371,
-                    'desa'      => $this->k_keluarga->GetDesa(),
-                    'dusun'     => $this->k_keluarga->GetDusun(),
-                    'jalan'     => $this->k_keluarga->GetJalan(),
-                    'gang'      => $this->k_keluarga->GetGang(),
+                    'desa'      => $this->ModelKartuKeluarga->GetDesa(),
+                    'dusun'     => $this->ModelKartuKeluarga->GetDusun(),
+                    'jalan'     => $this->ModelKartuKeluarga->GetJalan(),
+                    'gang'      => $this->ModelKartuKeluarga->GetGang(),
                 ];
             $this->load->view('header',$data);
             $this->load->view('sidebar');
-            $this->load->view('t_kartuk');
+            $this->load->view('ViewKartuKeluarga');
             $this->load->view('footer');
             }
             else{
@@ -40,11 +40,12 @@
             }
         }
         // dusun
+        // data ini dikirm ke model
         public function Dusun()
         {
             $id_desa = $this->input->post('desa');//dari  data{desa:} pada ajax
             // kirim id_desa dan return hasil nya
-            echo $this->k_keluarga->GetDusun($id_desa);
+            echo $this->ModelKartuKeluarga->GetDusun($id_desa);
         }
 
         // jalan
@@ -52,14 +53,14 @@
         {
             $id_desa = $this->input->post('dusun');//dari  data{desa:} pada ajax
             // kirim id_desa dan return hasil nya
-            echo $this->k_keluarga->GetJalan($id_desa);
+            echo $this->ModelKartuKeluarga->GetJalan($id_desa);
         }
 
         // gang
         public function Gang()
         {
             $id_jalan = $this->input->post('jalan');
-            echo $this->k_keluarga->GetGang($id_jalan);
+            echo $this->ModelKartuKeluarga->GetGang($id_jalan);
         }
     }
         

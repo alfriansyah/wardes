@@ -51,7 +51,7 @@
             // jalankan ajax
             $.ajax({
                 // sumber data
-                url     : "<?php base_url()?>add_gang/gang",
+                url     : "<?php base_url()?>idjalan",
                 method  : 'POST',
                 data    : {dusun:id_dusun},
                 success : function(data){
