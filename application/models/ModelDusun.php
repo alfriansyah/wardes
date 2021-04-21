@@ -21,6 +21,12 @@
             return $this->db->get('desa')->result_array();
         }
 
+        // get dusun
+        public function GetDusun(Type $var = null)
+        {
+            return $this->db->get('dusun')->result();
+        }
+
         // edit dusun 
         public function EditDusun(Type $var = null)
         {

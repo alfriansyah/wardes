@@ -1,7 +1,7 @@
 <?php
 
     
-    class model_jalan extends CI_Model{
+    class ModelJalan extends CI_Model{
         
         // tambah data dusun
         public function tambahjln()

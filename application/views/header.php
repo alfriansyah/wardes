@@ -29,5 +29,5 @@
   <script src="<?= base_url() ?>assets/plugins/jquery/jquery.js"></script>
   
 </head>
-<body class="<?= $header ?>">
-    <div class="<?= $wrapper?>">
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">

@@ -9,8 +9,8 @@
             // siapkan data 
             $gang = [
                 'id_gang'    => uniqid(),
-                'id_jalan'   => $this->input->post('jalan'),
-                'nama_gang' => $this->input->post('gang'),
+                'id_jalan'   => $this->input->post('jalan',true),
+                'nama_gang'  => $this->input->post('gang',true),
             ];
             $this->db->insert('gang',$gang);
         } 

@@ -3,23 +3,18 @@
     
     class ModelKartuKeluarga extends CI_Model{
         
-        // get desa langsung dari database
-        public function GetDesa()
-        {
-            $this->db->order_by('nama_desa','ASC');
-            return $this->db->get('desa')->result_array();
-        }
+        // // get desa langsung dari database
+        // public function GetDesa()
+        // {
+        //     $this->db->order_by('nama_desa','ASC');
+        //     return $this->db->get('desa')->result_array();
+        // }
         // get dusun
         // tampilkan dusun yg id desanya $val
         public function GetDusun($val='')
         {
-            $this->db->where('id_desa',$val);
-            $this->db->order_by('nama_dusun','asc');
-            $query  = $this->db->get('dusun')->result(); // result() , return as objek            
-            echo '<option> Pilih Dusun </option>';
-            foreach($query as $row){
-                echo '<option value="'.$row->id_dusun.'">'. $row->nama_dusun .'</option>';
-            }
+            $this->db->order_by('nama_dusun');
+            return $this->db->get('dusun')->result();
         }
         // get jalan
         public function GetJalan($val='')
@@ -44,18 +39,25 @@
                 echo '<option value="'.$row->id_gang.'">'.$row->nama_gang.'</option>';
             }
         }
-        
-        // tambah data gang
-        public function TambahGang()
-        {           
-            // siapkan data 
-            $gang = [
-                'id_gang'    => uniqid(),
-                'id_jalan'   => $this->input->post('jalan'),
-                'nama_gang' => $this->input->post('gang'),
+
+        // insert data kartu keluarga
+        public function TambahKartuKeluarga(Type $var = null)
+        {
+            // siapkan data
+            $data   = [
+                'id_kk'     => uniqid(),
+                'nik'       => $this->input->post('nik',true),
+                'nama_kk'   => $this->input->post('nama',true),
+                'id_desa'   => $this->input->post('desa',true),
+                'id_dusun'  => $this->input->post('dusun',true),
+                'id_jalan'  => $this->input->post('jalan',true),
+                'id_gang'   => $this->input->post('gang',true),
+                'Latitude'  => $this->input->post('latitude',true),
+                'longitude' => $this->input->post('longitude',true),
+                'date'      => null,
             ];
-            $this->db->insert('gang',$gang);
-        } 
+            $this->db->insert('kartu_keluarga',$data);
+        }
     }
 
 ?>

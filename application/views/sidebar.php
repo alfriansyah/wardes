@@ -58,7 +58,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?= base_url()?>kartukeluarga" class="nav-link">
+            <a href="<?= base_url()?>tambah/kartukeluarga" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>KK Baru</p>
             </a>
@@ -73,7 +73,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= base_url()?>tambah" class="nav-link">
+                <a href="<?= base_url()?>tambah/dusun" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Dusun</p>
                 </a>
@@ -81,7 +81,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= base_url()?>tambah_jalan" class="nav-link">
+                <a href="<?= base_url()?>tambah/jalan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Jalan</p>
                 </a>
@@ -89,7 +89,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= base_url()?>add_gang" class="nav-link">
+                <a href="<?= base_url()?>tambah/gang" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Gang</p>
                 </a>
@@ -100,18 +100,10 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
-                Extras
+                Hak Akses
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/examples/blank.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Import data Penduduk</p>
-                </a>
-              </li>
-            </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="pages/examples/blank.html" class="nav-link">
@@ -124,7 +116,7 @@
               <li class="nav-item">
                 <a href="pages/examples/blank.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Hirarki</p>
+                  <p>Tamu</p>
                 </a>
               </li>
             </ul>
@@ -139,7 +131,7 @@
           <li class="nav-item">
             <a href="pages/examples/login.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Data Penduduk</p>
+                <p>Import dari Excel</p>
             </a>
           </li>
           <li class="nav-item">

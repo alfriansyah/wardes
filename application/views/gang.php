@@ -1,6 +1,21 @@
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target="#exampleModal">
+  Tambah Gang
+</button>
 <div class="container ml-3">
     <div class="row">
-        <?= validation_errors() ?>
+    <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <?= validation_errors() ?>
         <form role='form' method='post'>
             <div class="card-body">
                 <div class="input-group mb-3">
@@ -27,17 +42,20 @@
                         </div>
                     <!-- end gang -->
                     </div>
-                
                 <div class="form-group">
                     <label for="kepalakeluarga">Tambah Gang</label>
-                    <input type="text" name='gang' class="form-control" id="gang" placeholder="">
+                    <input type="text" name='gang' class="form-control" id="gang" placeholder="Contoh : Bersama">
                 </div>
-            </div> <!-- card-body -->
-            <div class="card-footer">
+                <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
                   <button type='reset' class="btn btn-danger">Reset</button>
-                </div>            
+             </div> 
+            </div> <!-- card-body -->                       
         </form>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
 </div>
 

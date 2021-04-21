@@ -1,7 +1,8 @@
 <div class="container ">
     <div class="row justify-content-center">
         <div class="col-md-12 col-lg-6">
-            <form role='form' method='post' action=''>
+        <?= validation_errors() ?>
+            <form role='form' method='post' >
                 <div class="form-group">
                     <label for="nik">Nomor KK</label>
                     <input type="number" class="form-control" name='nik' id="nik" placeholder="masukkan nomor KK">
@@ -11,13 +12,13 @@
                     <input type="text" name='nama' class="form-control" id="nama" placeholder="masukkan nama kepala keluarga">
                 </div>
                 <label for="">Alamat</label>
-                <div class="form-row">
-                <div class="col-md-6 mb-3">
+                <div class="form-row">                
+                    <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Desa</label>
-                            <select class="form-control" name='desa' id="desa">
-                                <option>Pilih</option>
-                                <option value='3'>Bandar Khalipah</option>
+                            <select class="form-control" name='desa' id="desas">
+                                <option >Pilih desa</option>
+                                <option value="3">Bandar Khalipah</option>
                             </select>
                         </div>
                     </div>
@@ -26,6 +27,9 @@
                             <label for="exampleFormControlSelect1">Dusun</label>
                             <select class="form-control" name='dusun' id="dusun">
                                 <option >Pilih Dusun</option>
+                                <?php foreach ($dusun as $dusun): ?>
+                                    <option value='<?= $dusun->id_dusun ?>'> <?= $dusun->nama_dusun?> </option>
+                                <?php endforeach ?>
                             </select>
                         </div>
                     </div>
@@ -45,6 +49,15 @@
                             </select>
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="nama">Latitude</label>
+                    <input type="text" name='latitude' class="form-control" id="latitude" placeholder="masukkan latitude">
+                </div>
+                <div class="form-group">
+                    <label for="nama">Longitude</label>
+                    <input type="text" name='longitude' class="form-control" id="longitude" placeholder="masukkan longitude">
+                </div>
                     <!--Google map -->
 
                     <div class="col-auto my-1">
@@ -56,9 +69,9 @@
         </div>
     </div>
 </div>
+<?php var_dump($dusun) ?>
 <script>
     $(document).ready(function(){
-
         // dusun
         $('#desa').change(function(){
             // tangkap value dari desa
@@ -66,7 +79,7 @@
             // jalankan ajax
             $.ajax({
                 // sumber data
-                url    : "<?php base_url()?>kartukeluarga/Dusun/",
+                url    : "<?php base_url()?>"+'dusun1',
                 method : 'POST',
                 data   : {desa:id_desa},// dikirim ke controoler sebagain input->post('desa')
                 success:function(data){
@@ -84,7 +97,7 @@
             // jalankan ajax
             $.ajax({
                 // sumber data
-                url     : "<?php base_url()?>kartukeluarga/jalan",
+                url     : "<?php base_url()?>"+'jalan1',
                 method  :'POST',
                 data    : {dusun:id_dusun},
                 success : function(data){
@@ -100,7 +113,7 @@
             // jalankan ajax
             $.ajax({
                 //sumber data
-                url     : "<?php base_url()?>kartukeluarga/gang",
+                url     : "<?php base_url()?>"+'gang1',
                 method  : 'POST',
                 data    : {jalan:id_jalan},
                 success : function(data){
