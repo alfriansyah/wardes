@@ -23,43 +23,28 @@
   <div class="register-logo">
     <a href="../../index2.html">Bandar Khalipah</a>
   </div>
-
-  <?= validation_errors() ?>
-
   <div class="card">
     <div class="card-body register-card-body">
       <form  method="post">
-        <div class="input-group mb-3">
-          <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
+        <div class="form-group mb-3">
+          <label for="">Nama</label>
+          <input type="text" name="nama" class="form-control" placeholder="" value="<?= set_value('nama')?>">
+          <?= form_error('nama','<small class="text-danger  ">','</small>') ?>
         </div>
-        <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
+        <div class="form-group mb-3">
+          <label for="">Email</label>
+          <input type="email" name="email" class="form-control" placeholder="" value="<?= set_value('email') ?>">
+          <?= form_error('email','<small class="text-danger ">','</small>') ?>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
+        <div class="form-group mb-3">
+          <label for="">Password</label>
+          <input type="password" name="password" id="password" class="form-control" placeholder="Jangan gunakan nama atau tanggal lahir" value="<?= set_value('password')?>">
+          <?= form_error('password','<small class="text-danger ">','</small>') ?>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" name="password2" id="password2" class="form-control" placeholder="Ulangi password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
+        <div class="form-group mb-3">
+          <label for="">Konfirmasi Password</label>
+          <input type="password" name="password2" id="password2" class="form-control" placeholder="" value="<?= set_value('password2')?>">
+          <?= form_error('password2','<small class="text-danger ">','</small>') ?>
         </div>
         <div class="row">
           <div class="col-12">
