@@ -1,20 +1,18 @@
 <?php
 
-    $role_id  = $this->session->userdata('role_id');
+    $role_id    = $this->session->userdata('role_id');
+    $is_active  = $this->session->userdata('is_active');
     
     /* tampilkan user_menu.menu dari tabel join antara user_menu dan user_acce_access_menu berdasarkan
        user_menu.role_menu dan user_access_menu.role_menu yg memiliki nilai sama , dan pilih yang 
        user_access_menu.role_acces sama dengan = $role_id
     */
-    $query_menu     = "SELECT menu FROM user_menu INNER JOIN user_access_menu 
+    $query_menu     = "SELECT menu,user_menu.role_menu FROM user_menu INNER JOIN user_access_menu 
                        ON user_menu.role_menu = user_access_menu.role_menu 
                        WHERE user_access_menu.role_access = $role_id ";
     $menu    = $this->db->query($query_menu)->result_array();
+    ?>
 
-    // looping sub menu berdasarkan role_di
-    $query_sub_menu = "SELECT * FROM user_sub_menu WHERE menu_role= $role_id AND is_active=1 ";
-    $query_sub_menu = $this->db->query($query_sub_menu)->result_array();
-?>
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -24,7 +22,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="<?= base_url('home') ?>" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">hubungi Kami</a>
@@ -51,7 +49,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="index3.html" class="brand-link bg-success">
       <img src="<?= base_url()?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Logo desa</span>
@@ -76,40 +74,26 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                
-        <?php foreach($query_sub_menu as $menu) :  ?>
-        
-          <li class="nav-item">
-            <a href="<?= base_url().$menu['url']?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p><?= $menu['title']?></p>
-            </a>
-          </li>
+         <!--loop  -->
+        <?php foreach($menu as $menu) :  ?>
+          <div class="sidebaar-heading bg-success">
+            <?= $menu['menu']?>
+          </div>
+          <?php
+            $query_sub_menu = "SELECT * FROM user_sub_menu WHERE menu_role = {$menu['role_menu']}";
+            $sub_menu = $this->db->query($query_sub_menu)->result_array();
+        ?>
+          <!-- loop sub menu  -->
+          <?php foreach ($sub_menu as $sub_menu) : ?>
+            <li class="nav-item">
+              <a href="<?= base_url().$sub_menu['url']?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><?= $sub_menu['title']?></p>
+              </a>
+            </li>
           <?php endforeach ?>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <p>
-                Hak Akses
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/examples/blank.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kepala Dusun</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/examples/blank.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tamu</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+        <?php endforeach ?>
+          
           <li class="nav-header">====================================</li>
           <li class="nav-item">
             <a href="pages/examples/login.html" class="nav-link">

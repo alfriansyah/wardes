@@ -3,6 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class home extends CI_Controller {
 
+	// jika belum login redirect ke controller login
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->helper('fungsi');
+		// jika sesion email gak ada redirect ke login
+		is_logedin();
+	}
+
 	public function index()
 	{	
 		$data 	= [

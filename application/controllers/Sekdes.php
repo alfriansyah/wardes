@@ -2,6 +2,16 @@
 
     class Sekdes extends CI_Controller{
 
+
+        // jika belum login redirect ke controller login
+        public function __construct()
+        {
+            parent::__construct();
+            $this->load->helper('fungsi');            
+            // jika sesion email gak ada redirect ke login , is_logedin dibuat di helper
+            is_logedin();
+        }
+
         
         public function index(Type $var = null)
         {
