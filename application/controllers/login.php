@@ -45,18 +45,22 @@
                 if($password == $user['password']){
                     $data   = [
                         'email'     => $user['email'],
-                        'role_id'   => $user['role_id'],
+                        'role_id'   => $user['role_id'], // user['role_id']
                         'is_active' => $user['is_active']
                     ];
                     // buat session berdasarkan $data
                     $this->session->set_userdata($data);
                     // jika role_id == 1 maka redirect ke sekdes
-                    if($user['role_id']==1)
-                    {
-                        redirect('Sekdes');
-                    }else{
-                        redirect('user');
-                    }
+                    
+                  if($user['role_id']==1){                    
+                    redirect('sekdes');
+                  }
+                  elseif($user['role_id']==2){
+                      redirect('kadus');
+                  }
+                  else{
+                    redirect('tamu');
+                  }
                 }
                 else{
                     $this->session->set_flashdata('pesan','<div class="alert alert-warning" role="alert">

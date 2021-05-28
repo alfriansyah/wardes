@@ -73,7 +73,6 @@
                 method  : 'POST',
                 data    : {dusun:id_dusun},
                 success : function(data){
-                    console.log(data);
                     $('#jalan').html(data);
                 }
             })

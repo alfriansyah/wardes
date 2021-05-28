@@ -58,7 +58,6 @@
                 <?php endforeach ?>            
             </tbody>
         </table>
-        <?php var_dump($pagination) ?>
     </div>
 </div>
 

@@ -24,7 +24,8 @@
             $this->form_validation->set_rules('desa','Desa','required');
             if($this->form_validation->run() == FALSE){
             $data['desa']       = $this->ModelDusun->getdesa();
-            $data['dusun']      = $this->ModelDusun->GetDusun();            
+            $data['dusun']      = $this->ModelDusun->GetDusun();
+            $data['user']     	= $this->db->get_where('user',['email'=>$this->session->userdata('email')])->row_array();          
             $this->load->view('header',$data);
             $this->load->view('sidebar');
             $this->load->view('tambah_dusun');
@@ -47,7 +48,9 @@
             if($this->form_validation->run() == FALSE){
             $data['header']     = 'hold-transition sidebar-mini layout-fixed';
             $data['wrapper']    = 'wrapper';
-            $data['jalan']       = $this->ModelJalan->getdusun();
+            $data['jalan']      = $this->ModelJalan->getdusun();
+            $data['user']   	= $this->db->get_where('user',['email'=>$this->session->userdata('email')])->row_array();
+            $data['title']      = "Tambah Jalan";
             $this->load->view('header',$data);
             $this->load->view('sidebar');
             $this->load->view('tambah_jalan');
@@ -73,6 +76,8 @@
                 $data['wrapper']    = 'wrapper';
                 $data['jalan']      = $this->ModelGang->getjalan();
                 $data['dusun']      = $this->ModelGang->GetDusun();
+                $data['user']   	= $this->db->get_where('user',['email'=>$this->session->userdata('email')])->row_array();
+                $data['title']      = "Tambah Gang";
                 $this->load->view('header',$data);
                 $this->load->view('sidebar');
                 $this->load->view('gang');
@@ -115,6 +120,8 @@
                     'dusun'     => $this->ModelKartuKeluarga->GetDusun(),
                     'jalan'     => $this->ModelKartuKeluarga->GetJalan(),
                     'gang'      => $this->ModelKartuKeluarga->GetGang(),
+                    'title'     => "Tambah Kartu Keluarga",
+                    'user'  	=> $this->db->get_where('user',['email'=>$this->session->userdata('email')])->row_array(),
                 ];
             $this->load->view('header',$data);
             $this->load->view('sidebar');

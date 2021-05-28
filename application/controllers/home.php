@@ -16,9 +16,11 @@ class home extends CI_Controller {
 	{	
 		$data 	= [
 			'user'	=> $this->db->get_where('user',['email'=>$this->session->userdata('email')])->row_array(),
+			'title' => 'home',
+			'data'   => $this->db->get_where('user_menu',['menu'=>$this->uri->segment(1)])->row_array()
 		];
 		
-		$this->load->view('header');
+		$this->load->view('header',$data);
 		$this->load->view('sidebar',$data);
 		$this->load->view('home',$data);
 		$this->load->view('footer');

@@ -1,16 +1,5 @@
 <?php
 
-    $role_id    = $this->session->userdata('role_id');
-    $is_active  = $this->session->userdata('is_active');
-    
-    /* tampilkan user_menu.menu dari tabel join antara user_menu dan user_acce_access_menu berdasarkan
-       user_menu.role_menu dan user_access_menu.role_menu yg memiliki nilai sama , dan pilih yang 
-       user_access_menu.role_acces sama dengan = $role_id
-    */
-    $query_menu     = "SELECT menu,user_menu.role_menu FROM user_menu INNER JOIN user_access_menu 
-                       ON user_menu.role_menu = user_access_menu.role_menu 
-                       WHERE user_access_menu.role_access = $role_id ";
-    $menu    = $this->db->query($query_menu)->result_array();
     ?>
 
 
@@ -28,7 +17,7 @@
         <a href="#" class="nav-link">hubungi Kami</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a  href="<?= base_url().'home/logout'?>" class="nav-link">keluar</a>
+        <a  href="<?= base_url().'logout/keluar'?>" class="nav-link">keluar</a>
       </li>
     </ul>
 
@@ -61,7 +50,7 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
          
-          <a href="<?= base_url('user')?>" class="d-block">
+          <a href="<?= base_url('profil')?>" class="d-block">
             <img src="<?= base_url('assets/gambar/').$user['gambar']?>" class="img-circle elevation-2" alt="User Image">
           </a>
         </div>
@@ -75,11 +64,26 @@
                with font-awesome or any other icon font library -->
                
          <!--loop  -->
-        <?php foreach($menu as $menu) :  ?>
-          <div class="sidebaar-heading bg-success">
+        <?php 
+          
+          $role_id    = $this->session->userdata('role_id');
+          $is_active  = $this->session->userdata('is_active');
+          
+          /* tampilkan user_menu.menu dari tabel join antara user_menu dan user_acce_access_menu berdasarkan
+            user_menu.role_menu dan user_access_menu.role_menu yg memiliki nilai sama , dan pilih yang 
+            user_access_menu.role_acces sama dengan = $role_id
+          */
+          $query_menu     = "SELECT menu,user_menu.role_menu FROM user_menu INNER JOIN user_access_menu 
+                            ON user_menu.role_menu = user_access_menu.role_menu 
+                            WHERE user_access_menu.role_access = $role_id ";
+          $menu    = $this->db->query($query_menu)->result_array();
+              foreach($menu as $menu) :  ?>
+          <div class="sidebaar-heading bg-success mt-3">
             <?= $menu['menu']?>
           </div>
           <?php
+            // pilih user_sub_menu yang menu_role nya = 1 atau 2 
+            // jika 1 maka sub menu yang ditampilkan yg sub menu nya 1 
             $query_sub_menu = "SELECT * FROM user_sub_menu WHERE menu_role = {$menu['role_menu']}";
             $sub_menu = $this->db->query($query_sub_menu)->result_array();
         ?>

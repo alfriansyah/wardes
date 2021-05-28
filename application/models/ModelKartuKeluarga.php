@@ -54,7 +54,9 @@
                 'id_gang'   => $this->input->post('gang',true),
                 'Latitude'  => $this->input->post('latitude',true),
                 'longitude' => $this->input->post('longitude',true),
-                'date'      => null,
+                'date'      => $this->input->post('time'),
+                'pengisi'   => $this->input->post('user',true),
+                'keterangan'=> $this->input->post('keterangan',true)
             ];
             $this->db->insert('kartu_keluarga',$data);
         }

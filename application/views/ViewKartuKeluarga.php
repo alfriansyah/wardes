@@ -3,6 +3,8 @@
         <div class="col-md-12 col-lg-6">
         <?= validation_errors() ?>
             <form role='form' method='post' >
+                <input type="hidden" name="time" value="<?= date('d').date('m').date('y') ?>">
+                <input type="text" name="user" value="<?= $user['id_user']?>">
                 <div class="form-group">
                     <label for="nik">Nomor KK</label>
                     <input type="number" class="form-control" name='nik' id="nik" placeholder="masukkan nomor KK">
@@ -49,6 +51,10 @@
                             </select>
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label> Keterangan </label>
+                    <textarea class="form-control" name="keterangan" id="" cols="10" rows="5"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="nama">Latitude</label>
