@@ -1,79 +1,42 @@
-<!-- 
-    data penduduk berdasarkan siapa  yang login
-        jika 
- -->
-<table class="table">    
-  <thead>
-    <tr>
-      <th scope="col">No</th>
-      <th scope="col">Gambar</th>
-      <th scope="col">Nama</th>
-      <th scope="col">Nomor Hp</th>
-      <th scope="col">Alamat</th>
-      <th scope="col">Kadus</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php $no=1; foreach($data as $k) : ?>
-    <tr>
-      <td><?= $no++ ?></td>
-      <td>
-        <img class="img-thumbnail" width="100px" src="<?= base_url('assets/gambar/') .$user['gambar'] ?>" alt="">
-      </td>
-      <td><?= $k['nama']?></td>
-      <td><?= $k['no_hp']?></td>
-      <td><?= $k['alamat']?></td>
-      <td>
-        <select class="dusun" data-id="<?= $k['id_user']?>" name="dusun" >
-          <option> Pilih Dusun </option>            
-          <?php foreach($dusun as $d) : ?>         
-            <option class="id"value="<?= $d['id_dusun']?>" ><?= $d['nama_dusun']?></option>   
-          <?php endforeach ?> 
-        </select><br>
-        <small> Kepala Dusun : <?= $k['nama_dusun'] ?> </small>
-      </td>
-      <!-- 
-        tugas rupb
-            menjelaskan ke 4 bentuk proses itu apa dan beri contoh
-              integrasi proses
-              menyederhanakan proses 
-       -->
-      <td>
-      </td>
-    </tr>      
-    <?php endforeach ?>
-  </tbody>  
-</table>
-<!-- Note 
-            $key pada foreach sebaiknya jangan data itu sendiri 
-            contoh 
-            false ->  foreach($data as $data) ini kurang tepat karena jika nested foreach akan erorr setelah index ke 0
-            true  ->  foreach($data as $d) ini bagus membedakan antara $data dgn $d 
- -->
 
+<link rel="stylesheet" href="<?= base_url('assets/plugins/datatables/datatable.min.css') ?>">
+<div class="container">
+<table id="kartukeluarga" class="table" style="width:100%">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>NIK</th>
+        <th>Nama Kepala Keluarga</th>
+        <th>Dusun</th>
+        <th>Jalan</th>
+        <th>Gang</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ 
+  <!-- jQuery UI 1.11.4 -->
+<script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
  <script>
-    $(document).ready(function(){
-
-      // cari <select class="dusun" >
-      $("select.dusun").change(function(){
-          const Dusun = $(this).val();
-          const id    = $(this).attr('data-id');
-          // console.log(id);
-          $.ajax({
-                // alamat data di proses
-                url : "<?= base_url('sekdes/UbahDusun')?>",
-                type:"POST",
-                data:{
-                    ubahdusun :Dusun,
-                    id_user   :id,
-                },
-                // jika ajax sukses maka
-                success: function(data){
-                  document.location.href="<?= base_url('sekdes/kadus')?>" ;
-                },
-            });
-      });
-
-    })
-    var user = document.getElementById('')
+    $(document).ready(function() {
+        $('#kartukeluarga').DataTable( {
+            "processing": true,
+            "serverSide": true,
+            "ajax":{
+              "url"  : "<?= base_url('data/get_ajax')?>",
+              "type" : "POST"
+            },
+            "columnDefs":[
+              {
+                "targets":[0,1,6],
+                "orderable":false
+              }
+            ]
+        } );
+    } );
 </script>
